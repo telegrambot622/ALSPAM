@@ -1,4 +1,4 @@
-import sys
+ import sys
 import heroku3
 
 from config import X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, OWNER_ID, SUDO_USERS, HEROKU_APP_NAME, HEROKU_API_KEY, CMD_HNDLR as hl
@@ -7,7 +7,12 @@ from os import execl, getenv
 from telethon import events
 from datetime import datetime
 
+# Helper function to get bot stats
+async def get_stats():
+    total_chats = await X1.get_dialogs_count()
+    return f"Total chats: {total_chats}"
 
+# Ping command
 @X1.on(events.NewMessage(incoming=True, pattern=r"\%sping(?: |$)(.*)" % hl))
 @X2.on(events.NewMessage(incoming=True, pattern=r"\%sping(?: |$)(.*)" % hl))
 @X3.on(events.NewMessage(incoming=True, pattern=r"\%sping(?: |$)(.*)" % hl))
@@ -26,7 +31,7 @@ async def ping(e):
         mp = (end - start).microseconds / 1000
         await altron.edit(f"💫🥀 🫧 🇴 🇽 𝐘 𝐆 𝐄 𝐍\n» {mp} 𝙼𝚂")
 
-
+# Restart command
 @X1.on(events.NewMessage(incoming=True, pattern=r"\%sreboot(?: |$)(.*)" % hl))
 @X2.on(events.NewMessage(incoming=True, pattern=r"\%sreboot(?: |$)(.*)" % hl))
 @X3.on(events.NewMessage(incoming=True, pattern=r"\%sreboot(?: |$)(.*)" % hl))
@@ -39,7 +44,7 @@ async def ping(e):
 @X10.on(events.NewMessage(incoming=True, pattern=r"\%sreboot(?: |$)(.*)" % hl))
 async def restart(e):
     if e.sender_id in SUDO_USERS:
-        await e.reply(f"🥀𝚁𝙴𝚂𝚃𝙰𝚁𝚃𝙸𝙽𝙶 𝙾𝚇𝚈𝙶𝙴𝙽 𝙱𝙾𝚃𝚂🥀...")
+        await e.reply(f"🥀𝚁𝙴𝚂𝚃𝙰𝚁𝚃𝙸𝙽𝙶 𝙾𝚇𝚈𝙶𝙴𝙽 𝐁𝐎𝐓𝐒🥀...")
         try:
             await X1.disconnect()
         except Exception:
@@ -83,7 +88,7 @@ async def restart(e):
 
         execl(sys.executable, sys.executable, *sys.argv)
 
-
+# Add sudo user command
 @X1.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
 @X2.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
 @X3.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
@@ -129,7 +134,7 @@ async def addsudo(event):
     elif event.sender_id in SUDO_USERS:
         await event.reply("» 𝚂𝙾𝚁𝚁𝚈, 𝙾𝙽𝙻𝚈 𝙾𝚆𝙽𝙴𝚁 𝙲𝙰𝙽 𝙰𝙲𝙴𝚂𝚂 𝚃𝙷𝙸𝚂 𝙲𝙾𝙼𝙼𝙰𝙽𝙳.")
 
-        
+# Remove sudo user command
 @X1.on(events.NewMessage(incoming=True, pattern=r"\%sremovesudo(?: |$)(.*)" % hl))
 @X2.on(events.NewMessage(incoming=True, pattern=r"\%sremovesudo(?: |$)(.*)" % hl))
 @X3.on(events.NewMessage(incoming=True, pattern=r"\%sremovesudo(?: |$)(.*)" % hl))
@@ -171,8 +176,8 @@ async def removesudo(event):
     
     elif event.sender_id in SUDO_USERS:
         await event.reply("» 𝚂𝙾𝚁𝚁𝚈, 𝙾𝙽𝙻𝚈 𝚂𝚄𝙳𝙾 𝙲𝙰𝙽 𝚁𝙴𝙼𝙾𝚅𝙴 𝚂𝚄𝙳𝙾.")
-        
-        
+
+# List sudo users command
 @X1.on(events.NewMessage(incoming=True, pattern=r"\%sudolist(?: |$)(.*)" % hl))
 @X2.on(events.NewMessage(incoming=True, pattern=r"\%sudolist(?: |$)(.*)" % hl))
 @X3.on(events.NewMessage(incoming=True, pattern=r"\%sudolist(?: |$)(.*)" % hl))
@@ -189,9 +194,25 @@ async def sudolist(event):
         sudousers = getenv("SUDO_USERS", default=None)
 
         if sudousers:
-            await event.reply(f"» 𝚂𝚄𝙳𝙾 𝚄𝚂𝙴𝚁𝚂 𝙻𝙸𝚂𝚃: {sudousers}")
+            await event.reply(f"» 𝚂𝚄𝙳𝙾 𝚄𝚂𝙴𝚁𝚂:\n{sudousers}")
         else:
-            await event.reply("» 𝙽𝙾 𝚂𝚄𝙳𝙾 𝚄𝚂𝙴𝚁𝚂 𝙰𝚍𝚍𝚎𝚍.")
+            await event.reply("» 𝙽𝙾 𝚂𝚄𝙳𝙾 𝚄𝚂𝙴𝚁𝚂 𝙾𝙽 𝚃𝙷𝙴 𝙱𝙾𝚃.")
     
     elif event.sender_id in SUDO_USERS:
-        await event.reply("» 𝚂𝙾𝚁𝚁𝚈, 𝙾𝙽𝙻𝚈 𝙾𝚆𝙽𝙴𝚁 𝙲𝙰𝙽 𝙰𝙲𝙲𝙴𝚂𝚂 𝚃𝙷𝙸𝚂 𝙲𝙾𝙼𝙼𝙰𝙽𝙳.")
+        await event.reply("» 𝚂𝙾𝚁𝚁𝚈, 𝙾𝙽𝙻𝚈 𝙾𝚆𝙽𝙴𝚁 𝙲𝙰𝙽 𝙶𝙴𝚃 𝚂𝚄𝙳𝙾 𝚄𝚂𝙴𝚁𝚂.")
+
+# Get bot stats command
+@X1.on(events.NewMessage(incoming=True, pattern=r"\%sstats(?: |$)(.*)" % hl))
+@X2.on(events.NewMessage(incoming=True, pattern=r"\%sstats(?: |$)(.*)" % hl))
+@X3.on(events.NewMessage(incoming=True, pattern=r"\%sstats(?: |$)(.*)" % hl))
+@X4.on(events.NewMessage(incoming=True, pattern=r"\%sstats(?: |$)(.*)" % hl))
+@X5.on(events.NewMessage(incoming=True, pattern=r"\%sstats(?: |$)(.*)" % hl))
+@X6.on(events.NewMessage(incoming=True, pattern=r"\%sstats(?: |$)(.*)" % hl))
+@X7.on(events.NewMessage(incoming=True, pattern=r"\%sstats(?: |$)(.*)" % hl))
+@X8.on(events.NewMessage(incoming=True, pattern=r"\%sstats(?: |$)(.*)" % hl))
+@X9.on(events.NewMessage(incoming=True, pattern=r"\%sstats(?: |$)(.*)" % hl))
+@X10.on(events.NewMessage(incoming=True, pattern=r"\%sstats(?: |$)(.*)" % hl))
+async def stats(event):
+    if event.sender_id in SUDO_USERS:
+        stats = await get_stats()
+        await event.reply(stats)
