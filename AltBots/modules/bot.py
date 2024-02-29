@@ -24,7 +24,7 @@ async def ping(e):
         jarvis = await e.reply(f" 🇴𝗫𝗬𝗚𝗘𝗡")
         end = datetime.now()
         mp = (end - start).microseconds / 1000
-        await jarvis.edit(f"[🇴𝗫𝗬𝗚𝗘𝗡)🤖\n» `{mp} ᴍꜱ`")
+        await jarvis.edit(f"🇴𝗫𝗬𝗚𝗘𝗡🤖\n» `{mp} ᴍꜱ`")
 
 
 @X1.on(events.NewMessage(incoming=True, pattern=r"\%sreboot(?: |$)(.*)" % hl))
