@@ -8,7 +8,13 @@ from datetime import datetime
 from telethon import events
 from telethon.errors import ForbiddenError
 
- 
+async def count_groups(client):
+    count = 0
+    async for dialog in client.iter_dialogs():
+        if dialog.is_group:
+            count += 1
+    return count
+
 @X1.on(events.NewMessage(incoming=True, pattern=r"\%sstats(?: |$)(.*)" % hl))
 @X2.on(events.NewMessage(incoming=True, pattern=r"\%sstats(?: |$)(.*)" % hl))
 @X3.on(events.NewMessage(incoming=True, pattern=r"\%sstats(?: |$)(.*)" % hl))
@@ -22,10 +28,12 @@ from telethon.errors import ForbiddenError
 async def stats(legend):
     if legend.sender_id == OWNER_ID:
         
-        await legend.reply("Getting bot stats...")
+        users = await legend.client.get_me()
+        groups_count = await count_groups(legend.client)
+        
+        await legend.reply(f"Current users: {users.total_count}\nActive in {groups_count} groups.")
     else:
         await legend.reply("Sorry, only the bot owner can access this command.")
-
 
 @X1.on(events.NewMessage(incoming=True, pattern=r"\%sbroadcast(?: |$)(.*)" % hl))
 @X2.on(events.NewMessage(incoming=True, pattern=r"\%sbroadcast(?: |$)(.*)" % hl))
@@ -39,7 +47,8 @@ async def stats(legend):
 @X10.on(events.NewMessage(incoming=True, pattern=r"\%sbroadcast(?: |$)(.*)" % hl))
 async def broadcast(legend):
     if legend.sender_id == OWNER_ID:
+        groups_count = await count_groups(legend.client)
+        await legend.reply(f"Broadcasting message to {groups_count} groups...")
         
-        await legend.reply("Broadcasting message...")
     else:
         await legend.reply("Sorry, only the bot owner can access this command.")
