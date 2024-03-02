@@ -5,7 +5,7 @@ from config import X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, OWNER_ID, CMD_HNDLR 
 
 from telethon import events
 
-# Connect to MongoDB
+
 mongo_client = AsyncIOMotorClient("mongodb+srv://yashsamrat32169:ylWiINR00JzSqwhP@cluster0.j44oov2.mongodb.net/?retryWrites=true&w=majority")
 mongodb = mongo_client.get_default_database()
 
@@ -48,6 +48,6 @@ async def broadcast(legend):
     if legend.sender_id == OWNER_ID:
         groups_count = await count_groups(legend.client)
         await legend.reply(f"Broadcasting message to {groups_count} groups...")
-        # Your broadcast code goes here
+        
     else:
         await legend.reply("Sorry, only the bot owner can access this command.")
