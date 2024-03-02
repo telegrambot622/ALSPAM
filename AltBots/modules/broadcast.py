@@ -1,12 +1,13 @@
 import asyncio
-import heroku3
+from motor.motor_asyncio import AsyncIOMotorClient
 
-from config import X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, OWNER_ID, HEROKU_API_KEY, HEROKU_APP_NAME, CMD_HNDLR as hl
-
-from datetime import datetime
+from config import X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, OWNER_ID, CMD_HNDLR as hl
 
 from telethon import events
-from telethon.errors import ForbiddenError
+
+# Connect to MongoDB
+mongo_client = AsyncIOMotorClient("mongodb+srv://yashsamrat32169:ylWiINR00JzSqwhP@cluster0.j44oov2.mongodb.net/?retryWrites=true&w=majority")
+mongodb = mongo_client.get_default_database()
 
 async def count_groups(client):
     count = 0
@@ -27,10 +28,8 @@ async def count_groups(client):
 @X10.on(events.NewMessage(incoming=True, pattern=r"\%sstats(?: |$)(.*)" % hl))
 async def stats(legend):
     if legend.sender_id == OWNER_ID:
-        
         users = await legend.client.get_me()
         groups_count = await count_groups(legend.client)
-        
         await legend.reply(f"Current users: {users.total_count}\nActive in {groups_count} groups.")
     else:
         await legend.reply("Sorry, only the bot owner can access this command.")
@@ -49,6 +48,6 @@ async def broadcast(legend):
     if legend.sender_id == OWNER_ID:
         groups_count = await count_groups(legend.client)
         await legend.reply(f"Broadcasting message to {groups_count} groups...")
-        
+        # Your broadcast code goes here
     else:
         await legend.reply("Sorry, only the bot owner can access this command.")
