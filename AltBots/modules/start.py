@@ -7,11 +7,11 @@ START_BUTTON = [
         Button.inline("• 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦 •", data="help_back")
     ],
     [
-        Button.url("•  𝗖𝗛𝗔𝗡𝗡𝗘𝗟 •", "https://t.me/BWANDARLOK"),
-        Button.url("• 𝗦𝗨𝗣𝗣𝗢𝗥𝗧 •", "https://t.me/PRADHAN474")
+        Button.url("•  𝗖𝗛𝗔𝗡𝗡𝗘𝗟 •", "https://t.me/Emotional_Feelings_Channel"),
+        Button.url("• 𝗦𝗨𝗣𝗣𝗢𝗥𝗧 •", "https://t.me/amrit_raj_9")
     ],
     [
-        Button.url("• 𝗥𝗘𝗣𝗢 •", "https://github.com/PRADHAN474/ALSPSM")
+        Button.url("• 𝗥𝗘𝗣𝗢 •", "https://github.com/telegrambot622/ALSPAM")
     ]
 ]
 
@@ -34,7 +34,7 @@ async def start(event):
             "╔═════════════════════╗\n"
             "║ ʜᴇʏ [{event.sender.first_name}](tg://user?id={event.sender.id}),\n\nɪ ᴀᴍ [{bot_name}](tg://user?id={bot_id}) ║\n"
             "║━━━━━━━━━━━━━━━━━━━║\n"
-            "║ ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀ : [𝗢𝗫𝗬𝗚𝗘𝗡](https://t.me/PRADHAN474) ║\n"
+            "║ ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀ : [𝗢𝗫𝗬𝗚𝗘𝗡](https://t.me/amrit_raj_9) ║\n"
             "║━━━━━━━━━━━━━━━━━━━║\n"
             "║ xʙᴏᴛꜱ ᴠᴇʀsɪᴏɴ : M3.3 ║\n"
             "║ ᴘʏᴛʜᴏɴ ᴠᴇʀsɪᴏɴ : 3.11.3 ║\n"
@@ -43,7 +43,7 @@ async def start(event):
         )
         await event.client.send_file(
                     event.chat_id,
-                    "https://te.legra.ph/file/7bc5551374ee010ba57d2.jpg",
+                    "https://telegra.ph/file/d608c579c1252872dd925.jpg",
                     caption=TEXT, 
                     buttons=START_BUTTON
                 )
