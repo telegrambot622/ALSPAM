@@ -3,7 +3,7 @@ from telethon import events, Button
 from config import X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, SUDO_USERS, CMD_HNDLR as hl
 
 
-HELP_STRING = f"★ 𝗢𝗫𝗬𝗚𝗘𝗡 𝗕𝗢𝗧 𝗛𝗘𝗟𝗣 𝗠𝗘𝗡𝗨 ★\n\n» **𝙲𝙻𝙸𝙲𝙺 𝙾𝙽 𝙱𝙴𝙻𝙾𝚆 𝙱𝚄𝚃𝚃𝙾𝙽 𝙵𝙾𝚁 𝙷𝙴𝙻𝙿**\n» **𝙳𝙴𝚅𝙴𝙻𝙾𝙿𝙴𝚁: @PRADHAN474**"
+HELP_STRING = f"★ 𝗢𝗫𝗬𝗚𝗘𝗡 𝗕𝗢𝗧 𝗛𝗘𝗟𝗣 𝗠𝗘𝗡𝗨 ★\n\n» **𝙲𝙻𝙸𝙲𝙺 𝙾𝙽 𝙱𝙴𝙻𝙾𝚆 𝙱𝚄𝚃𝚃𝙾𝙽 𝙵𝙾𝚁 𝙷𝙴𝙻𝙿**\n» **𝙳𝙴𝚅𝙴𝙻𝙾𝙿𝙴𝚁: @amrit_raj_9**"
 
 HELP_BUTTON = [
     [
@@ -14,8 +14,8 @@ HELP_BUTTON = [
       Button.inline("𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦", data="extra")
     ],
     [
-      Button.url("𝗗𝗘𝗩𝗘𝗟𝗢𝗣𝗘𝗥", "https://t.me/PRADHAN474"),
-      Button.url("𝗦𝗨𝗣𝗣𝗢𝗥𝗧", "https://t.me/BWANDARLOK")
+      Button.url("𝗗𝗘𝗩𝗘𝗟𝗢𝗣𝗘𝗥", "https://t.me/amrit_raj_9"),
+      Button.url("𝗦𝗨𝗣𝗣𝗢𝗥𝗧", "https://t.me/Emotional_Feelings_Channel")
     ]
   ]
 
@@ -34,7 +34,7 @@ async def help(event):
     if event.sender_id in SUDO_USERS:
         try:
           await event.client.send_file(event.chat_id,
-              "https://te.legra.ph/file/7bc5551374ee010ba57d2.jpg",
+              "https://telegra.ph/file/6e76f95ff46290abfa68a.jpg",
               caption=HELP_STRING,
               buttons=HELP_BUTTON
               )
@@ -136,13 +136,13 @@ async def helpback(event):
                 Button.inline("𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦", data="extra")
               ],
               [
-                Button.url("𝗢𝗫𝗬𝗚𝗘𝗡", "https://t.me/PRADHAN474"),
-                Button.url("𝗠𝗬 𝗚𝗥𝗢𝗨𝗣", "https://t.me/BWANDARLOK")
+                Button.url("𝗢𝗫𝗬𝗚𝗘𝗡", "https://t.me/amrit_raj_9"),
+                Button.url("𝗠𝗬 𝗚𝗥𝗢𝗨𝗣", "https://t.me/Emotional_Feelings_Channel")
               ]
             ]
           )
     else:
-        await event.answer("𝙾𝚇𝚈𝙶𝙴𝙽 𝚂𝙴 𝙹𝙰 𝙺𝙴 𝚂𝚄𝙳𝙾 𝙻𝙴𝙻𝙾  @PRADHAN474" , cache_time=0, alert=True)
+        await event.answer("𝙾𝚇𝚈𝙶𝙴𝙽 𝚂𝙴 𝙹𝙰 𝙺𝙴 𝚂𝚄𝙳𝙾 𝙻𝙴𝙻𝙾  @amrit_raj_9" , cache_time=0, alert=True)
 
 
 @X1.on(events.CallbackQuery(pattern=r"spam"))
@@ -161,7 +161,7 @@ async def help_spam(event):
               buttons=[[Button.inline("< Back", data="help_back"),],],
               ) 
     else:
-        await event.answer("𝙾𝚇𝚈𝙶𝙴𝙽 𝚂𝙴 𝙹𝙰 𝙺𝙴 𝚂𝚄𝙳𝙾 𝙻𝙴𝙻𝙾 @PRADHAN474 💖", cache_time=0, alert=True)
+        await event.answer("𝙾𝚇𝚈𝙶𝙴𝙽 𝚂𝙴 𝙹𝙰 𝙺𝙴 𝚂𝚄𝙳𝙾 𝙻𝙴𝙻𝙾 @amrit_raj_9 💖", cache_time=0, alert=True)
 
 
 @X1.on(events.CallbackQuery(pattern=r"raid"))
@@ -180,7 +180,7 @@ async def help_raid(event):
             buttons=[[Button.inline("< Back", data="help_back"),],],
           )
     else:
-        await event.answer("𝙾𝚇𝚈𝙶𝙴𝙽 𝚂𝙴 𝙹𝙰 𝙺𝙴 𝚂𝚄𝙳𝙾 𝙻𝙴𝙻𝙾 @PRADHAN474 💖", cache_time=0, alert=True)
+        await event.answer("𝙾𝚇𝚈𝙶𝙴𝙽 𝚂𝙴 𝙹𝙰 𝙺𝙴 𝚂𝚄𝙳𝙾 𝙻𝙴𝙻𝙾 @amrit_raj_9 💖", cache_time=0, alert=True)
 
 
 @X1.on(events.CallbackQuery(pattern=r"extra"))
@@ -199,4 +199,4 @@ async def help_extra(event):
             buttons=[[Button.inline("< Back", data="help_back"),],],
             )
     else:
-        await event.answer("𝙾𝚇𝚈𝙶𝙴𝙽 𝚂𝙴 𝙹𝙰 𝙺𝙴 𝚂𝚄𝙳𝙾 𝙻𝙴𝙻𝙾 @PRADHAN474 💖", cache_time=0, alert=True)
+        await event.answer("𝙾𝚇𝚈𝙶𝙴𝙽 𝚂𝙴 𝙹𝙰 𝙺𝙴 𝚂𝚄𝙳𝙾 𝙻𝙴𝙻𝙾 @amrit_raj_9 💖", cache_time=0, alert=True)
